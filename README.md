@@ -31,6 +31,36 @@ go build ./server.go
 
 ## Sample
 
+Crossdomain制約を外しているので、ブラウザからでも動作する・・・ハズ
+
 ```
 % curl -sS http://fc2.aozora0000.biz/?mid=20150309euLnarHF
+```
+
+```
+<html>
+    <head>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <a></a>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                type: "GET",
+                url: "http://fc2.aozora0000.biz/",
+                data: {
+                    mid: "20150309euLnarHF"
+                }
+            }).done(function(data){
+                $("body > a").attr("href",data.Path);
+                $("body > a").html(data.Title);
+            }).fail(function(data){
+                alert('error!!!');
+            });
+        });
+    </script>
+</html>
 ```
