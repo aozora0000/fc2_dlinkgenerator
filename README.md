@@ -29,6 +29,16 @@ go build ./server.go
 
 - mid : 動画ID(16桁の英数字)
 
+### Response
+| param |  type  | context  |
+|:-----:|:------:|:--------:|
+| Iserror | bool | エラーかどうか |
+| Path | string | ダウンロードパス |
+| Title | string | 動画タイトル |
+| Isadult | bool | エロかどうか |
+| Payment | bool | 会員限定かどうか |
+| Length | integer | 動画の長さ(second) |
+
 ## Sample
 
 Crossdomain制約を外しているので、ブラウザからでも動作する・・・ハズ
@@ -64,3 +74,8 @@ Crossdomain制約を外しているので、ブラウザからでも動作する
     </script>
 </html>
 ```
+
+## License
+MIT License
+自由に使って頂いても結構です。
+ご利用の場合、いかなる責任も当方は負いません。
