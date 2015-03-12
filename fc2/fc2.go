@@ -9,6 +9,7 @@ import(
     "io"
     "io/ioutil"
     "encoding/json"
+    "runtime"
 )
 
 type Detail struct {
@@ -21,6 +22,11 @@ type Detail struct {
 }
 
 var error_json = "{Iserror: true}"
+
+func init() {
+    cpus := runtime.NumCPU()
+    runtime.GOMAXPROCS(cpus)
+}
 
 func mimi(video_id string) string {
     h := md5.New()

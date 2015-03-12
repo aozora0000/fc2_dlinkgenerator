@@ -9,7 +9,13 @@ import (
     "strconv"
     "./fc2"
     "regexp"
+    "runtime"
 )
+
+func init() {
+    cpus := runtime.NumCPU()
+    runtime.GOMAXPROCS(cpus)
+}
 
 /* ----------------------- */
 /* --- controller          */
