@@ -1,0 +1,11 @@
+host='aozora0000'
+path='/usr/share/nginx/fc2'
+
+[deploy]
+git pull
+go build ./server.go
+[ -e /tmp/fc2.pid ] && kill $(cat /tmp/fc2.pid)
+nohup ./server -p 9999 & echo $! > /tmp/fc2.pid
+
+[status]
+uptime
